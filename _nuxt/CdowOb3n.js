@@ -1,0 +1,1 @@
+import{d as n,ar as o}from"./DSJi3dgO.js";const e=n({name:"DocumentDrivenNotFound",render(){return o("div","Document not found")}}),r=Object.assign(e,{__name:"DocumentDrivenNotFound"});export{r as default};
