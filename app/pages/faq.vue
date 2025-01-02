@@ -16,15 +16,42 @@ defineOgImageComponent('Saas')
 </script>
 
 <template>
-  <div v-if="page">
-    <UPageHero v-bind="page.hero">
-      <template #links>
-        <UPricingToggle
-          v-model="isYearly"
-          class="w-48"
-        />
+    <ULandingHero
+      :title="page.hero.title"
+      :description="page.hero.description"
+      :links="page.hero.links"
+    >
+      <div class="absolute inset-0 landing-grid z-[-1] [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]" />
+
+      <template #headline>
+        <UBadge
+          v-if="page.hero.headline"
+          variant="subtle"
+          size="lg"
+          class="relative rounded-full font-semibold"
+        >
+          <NuxtLink
+            :to="page.hero.headline.to"
+            target="_blank"
+            class="focus:outline-none"
+            tabindex="-1"
+          >
+            <span
+              class="absolute inset-0"
+              aria-hidden="true"
+            />
+          </NuxtLink>
+
+          {{ page.hero.headline.label }}
+
+          <UIcon
+            v-if="page.hero.headline.icon"
+            :name="page.hero.headline.icon"
+            class="ml-1 w-4 h-4 pointer-events-none"
+          />
+        </UBadge>
       </template>
-    </UPageHero>
+    </ULandingHero>
 
     <ULandingSection
       :title="page.faq.title"
